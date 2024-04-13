@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -37,3 +37,24 @@ def lista_oficina(request):
         'oficinas': oficinas,
     }
     return render(request, template_name, context)
+
+@login_required
+def excluir_oficina(request,pk):
+    oficina = get_object_or_404(Oficina, pk=pk) 
+    oficina.delete()
+    messages.info(request, 'Oficina excluida com sucesso.')
+    return redirect('geral:lista_oficina')
+
+@login_required
+def editar_oficina(request, pk):
+    template_name ='geral/nova_oficina.html'
+    context={}
+    oficina= get_object_or_404(oficina,pk=pk)
+    if request.method == 'POST':
+        form = OficinaForm(data=request.POST, instance=oficina)
+        form.save()
+        messages.sucess(request, 'Oficina editada com sucesso.')
+        return redirect('geral:listaOficina')
+    form= OficinaForm(instance=oficina)
+    context['form'] =form
+    return render (request, template_name, context)

@@ -7,7 +7,7 @@
 {% endblock titulo %}
 
 {% block main %}
-    <form method=" post">
+    <form method="post">
         {% csrf_token %}
         <div class="mb-3">
             <label for="{{ form.nome.id_for_label }}" class="form-label">{{ form.nome.label}}</label>

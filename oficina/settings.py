@@ -55,7 +55,7 @@ UTIL_APPS = [
 OFICINA_APPS = [
     'usuarios.apps.UsuariosConfig',
     'geral.apps.GeralConfig',
-    'servicos.apps.ServicosConfig',
+    #'servicos.apps.ServicosConfig',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + UTIL_APPS + OFICINA_APPS
