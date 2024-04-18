@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Oficinas | {{ block.super }}
+{% endblock titulo %}
+
+{% block main  %}
+    {% include 'utils/messages.html' %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col"></th>
+                <th scope="col">CNPJ</th>
+                <th scope="col">TELEFONE</th>
+                <th scope="col" colspan='2'>AÇOES</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for oficina in oficinas %}
+                <tr>
+                    <th scope="row">{{ oficina.id }} </th>
+                    <td>{{ oficina.nome }}</td>
+                    <td>{{ oficina.cnpj }}</td>
+                    <td>{{ oficina.telefone }}</td>
+                    <td>
+                        <a href='{% url "geral:editar_oficina" oficina.id %}' class='btn btn-outline-info btn-sm'>Editar</a>
+                        <a href='{% url "geral:excluir_oficina" oficina.id %}' class='btn btn-outline-danger btn-sm'>Excluir</a>
+                </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
+    <a href='{% url "geral:nova_oficina" %}' class='btn btn-primary'>Nova<a/> 
+
+{% endblock main %}
+

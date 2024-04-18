@@ -1,9 +1,12 @@
-from django.contrib import admin
-from django.urls import path, include
-# from apps.usuarios import views
+from django.urls import path
+
+app_name = 'servicos'
+
+from . import views 
+
 
 urlpatterns = [
-    path('usuarios/', include('usuarios.urls', namespace='usuarios')),
-    path('admin/', admin.site.urls),
-    path('', include('geral.urls', namespace='geral')),
+    path('novo/', views.novo_servico, name='novo_servico'),
+    path('atualizar/int:pk>/', views.atualziar_servico, name='atualizar_servico'),
+    path('', views.lista_servico, name='lista_servicos'),
 ]

@@ -1,9 +1,7 @@
-     
-        
+           
 import datetime
 from django.db import models
 from geral.models import Oficina, Mecanico
-
 
 # Create your models here.
 
@@ -16,6 +14,7 @@ class Servico(models.Model):
 
     def __str__(self) -> str:
         return self.nome
+    
     
     class Meta:
         verbose_name = 'Serviço'

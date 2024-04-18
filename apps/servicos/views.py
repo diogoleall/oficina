@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.decorators import user
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 from .forms import ServicoForm
+
+from .models import Servico
 from geral.models import Oficina
 
 @login_required
@@ -45,7 +47,7 @@ def excluir_servico(request, pk):
 
 @login_required
 def editar_servico(request, pk):
-    template_name = 'geral/nova_servico.html'
+    template_name = 'geral/novo_servico.html'
     context = {}
     servico = get_object_or_404(Servico, pk=pk)
     if request.method == 'POST':
