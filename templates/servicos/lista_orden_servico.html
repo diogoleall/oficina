@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Oficinas | {{ block.super }}
+{% endblock titulo %}
+
+{% block main  %}
+    {% include 'utils/messages.html' %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Previsão</th>
+                <th scope="col">Serviços</th>
+                <th scope="col" colspan='2'>AÇOES</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for servico in servicos %}
+                <tr>
+                    <th scope="row">{{ oficina.id }} </th>
+                    <td>{{ os.cliente }}</td>
+                    <td>{{ os.placa }}</td>
+                    <td>{{ os.previsao }}</td>
+                    <td>{{ os.servico }}</td>
+                    <td>              <a href='{% url "geral:editar_servico" servico.id %}' class='btn btn-outline-info btn-sm'>Editar</a>
+                        <a href='{% url "servicos:criar_ordem_servico" %}' class='btn btn-primary '>Criar os serviço</a>
+                </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
+    <a href='{% url "servicos:lista_ordem_servico" %}' class='btn btn-primary'>Nova<a/> 
+
+{% endblock main %}

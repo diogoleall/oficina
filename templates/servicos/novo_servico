@@ -3,7 +3,7 @@
 
 
 {% block titulo %}
-    Oficina | {{ block.super }}
+    Servico | {{ block.super }}
 {% endblock titulo %}
 
 {% block main %}
@@ -11,31 +11,21 @@
         {% csrf_token %}
         <div class="mb-3">
             <label for="{{ form.nome.id_for_label }}" class="form-label">{{ form.nome.label}}</label>
-            {% render_field form.nome class='form-control'  placeholder='Digite o nome da oficina...'%}
+            {% render_field form.nome class='form-control'  placeholder='Digite o nome do servico...'%}
         </div>
 
         <div class="mb-3">
-            <label for="{{ form.cnpj.id_for_label }}" class="form-label">{{ form.cnpj.label}}</label>
-            {% render_field form.cnpj class='form-control'  placeholder='Digite o CNPJ da oficina...' %}
+            <label for="{{ form.valor.id_for_label }}" class="form-label">{{ form.valor.label}}</label>
+            {% render_field form.valor class='form-control'  placeholder='Digite o VALOR da servico...' %}
         </div>
 
         <div class="mb-3">
-            <label for="{{ form.endereco.id_for_label }}" class="form-label">{{ form.endereco.label}}</label>
-            {% render_field form.endereco class='form-control'  placeholder='Digite o endereco da oficina...' %}
-        </div>
-
-        <div class="mb-3">
-            <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label}}</label>
-            {% render_field form.email class='form-control'  placeholder='Digite o email da oficina...' %}
-        </div>
-
-        <div class="mb-3">
-            <label for="{{ form.telefone.id_for_label }}" class="form-label">{{ form.telefone.label}}</label>
-            {% render_field form.telefone class='form-control'  placeholder='Digite o telefone da oficina...' %}
+            <label for="{{ form.comissao.id_for_label }}" class="form-label">{{ form.comissao.label}}</label>
+            {% render_field form.comissao class='form-control'  placeholder='Digite o comissao da servico...' %}
         </div>
         
         <button type='submit' class="btn btn-primary">Adcionar</button>
-        <a href="{% url 'geral:lista_oficina' %}" class="btn btn-outline-secondary">Cancelar</a>
+        <a href="{% url 'geral:lista_servico' %}" class="btn btn-outline-secondary">Cancelar</a>
  
         
     </form>

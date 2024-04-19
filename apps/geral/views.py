@@ -90,4 +90,5 @@ def lista_mecanico(request):
         'mecanicos':mecanicos
     }
     return render(request, template_name,context)
-       
+
+
